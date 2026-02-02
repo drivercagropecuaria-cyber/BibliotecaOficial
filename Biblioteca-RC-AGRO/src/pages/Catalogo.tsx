@@ -5,20 +5,14 @@ import { VirtualMediaGrid } from '@/components/Media/VirtualMediaGrid'
 import { useCatalogo } from '@/hooks/useCatalogo'
 import { useCatalogoFilters } from '@/hooks/useCatalogoFilters'
 import { useDebounce } from '@/hooks/useDebounce'
-import { useAreas, useStatus, useTemas, useTipos } from '@/hooks/useLookups'
 import type { MediaItem } from '@/types'
 
 export const CatalogoPage = () => {
-  const { filters, setPage, setStatusId, setAreaId, setTemaId, setTipoId, setSearch, resetFilters } =
-    useCatalogoFilters()
+  const { filters, setPage, setSearch, resetFilters } = useCatalogoFilters()
   const debouncedSearch = useDebounce(filters.search ?? '', 300)
   const queryFilters = useMemo(() => ({ ...filters, search: debouncedSearch }), [filters, debouncedSearch])
 
   const { data, isLoading, error } = useCatalogo(queryFilters)
-  const { data: areas } = useAreas()
-  const { data: status } = useStatus()
-  const { data: temas } = useTemas()
-  const { data: tipos } = useTipos()
 
   const handleItemClick = (item: MediaItem) => {
     console.info('Item selecionado:', item)
@@ -36,19 +30,7 @@ export const CatalogoPage = () => {
         </div>
       </div>
 
-      <FilterBar
-        filters={filters}
-        areas={areas}
-        status={status}
-        temas={temas}
-        tipos={tipos}
-        onStatusChange={setStatusId}
-        onAreaChange={setAreaId}
-        onTemaChange={setTemaId}
-        onTipoChange={setTipoId}
-        onSearchChange={setSearch}
-        onReset={resetFilters}
-      />
+      <FilterBar filters={filters} onSearchChange={setSearch} onReset={resetFilters} />
 
       {isLoading && <LoadingSpinner message="Carregando catálogo..." />}
       {error && !isLoading && (

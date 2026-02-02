@@ -1,32 +1,19 @@
-# Modelo de Dados (proposta inicial)
+# Modelo de Dados (stub)
 
 ## media
 - id (uuid)
 - title (text)
 - description (text)
-- type (enum: image | video | audio | document)
+- type (image | video | audio | document)
 - storage_path (text)
 - thumbnail_path (text)
-- created_at (timestamp)
-- updated_at (timestamp)
-- tags (relation)
-- categories (relation)
-- collection_id (relation)
+- created_at (timestamptz)
+- updated_at (timestamptz)
 
-## tags
-- id (uuid)
-- name (text)
+## lookups
+- areas (id, nome, descricao)
+- status (id, nome, descricao)
+- temas (id, nome)
+- tipos_projeto (id, nome)
 
-## categories
-- id (uuid)
-- name (text)
-
-## collections
-- id (uuid)
-- name (text)
-- description (text)
-
-## Próximos passos
-- Refinar campos obrigatórios e índices.
-- Definir políticas RLS e permissões por perfil.
-- Planejar tabelas auxiliares (audit logs, favorites, search history).
+TODO: adicionar campos de taxonomia completa e metadados narrativos.

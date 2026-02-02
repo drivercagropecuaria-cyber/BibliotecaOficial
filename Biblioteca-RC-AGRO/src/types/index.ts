@@ -1,5 +1,5 @@
 export interface MediaFile {
-  tipo: 'imagem' | 'video'
+  tipo: 'imagem' | 'video' | 'outro'
   formato: string
   tamanhoBytes: number
   url: string

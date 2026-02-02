@@ -1,16 +1,6 @@
-# Convenções do Projeto
+# Convenções
 
-## Código
-- TypeScript estrito.
-- Componentes React em PascalCase.
-- Hooks começam com `use`.
-- Services isolam acesso a dados.
-
-## Pastas
-- `components/`: UI reutilizável.
-- `hooks/`: lógica de dados e efeitos.
-- `services/`: integração com Supabase.
-- `lib/`: helpers e configuração (QueryClient).
-
-## Commits
-- Prefixos sugeridos: `feat`, `fix`, `docs`, `chore`, `refactor`.
+- TS strict
+- Sem try/catch em imports
+- ESLint + Prettier
+- Env somente com prefixo VITE_

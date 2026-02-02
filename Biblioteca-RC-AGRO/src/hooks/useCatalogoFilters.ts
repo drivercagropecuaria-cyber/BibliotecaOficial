@@ -3,7 +3,7 @@ import type { CatalogoFilters } from '@/types'
 
 const DEFAULT_FILTERS: CatalogoFilters = {
   page: 1,
-  limit: 50,
+  limit: 24,
 }
 
 export const useCatalogoFilters = () => {

@@ -1,10 +1,8 @@
-# Variáveis de Ambiente
+# Ambiente
 
-```
-VITE_SUPABASE_URL=
-VITE_SUPABASE_ANON_KEY=
-```
+Variáveis obrigatórias:
+- VITE_SUPABASE_URL
+- VITE_SUPABASE_ANON_KEY
+- VITE_SUPABASE_STORAGE_BUCKET
 
-## Observações
-- Nunca commitar chaves reais.
-- Usar `.env.local` para desenvolvimento.
+Nunca exponha Service Role no frontend.

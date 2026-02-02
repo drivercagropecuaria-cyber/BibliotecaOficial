@@ -31,11 +31,7 @@ export const LazyImage = memo(({ src, alt, className = '', aspectRatio = 16 / 9 
   }, [])
 
   return (
-    <div
-      ref={containerRef}
-      className={`lazy-image-container ${className}`}
-      style={{ aspectRatio }}
-    >
+    <div ref={containerRef} className={`lazy-image-container ${className}`} style={{ aspectRatio }}>
       {!isLoaded && !hasError && <div className="skeleton-pulse" />}
       {hasError ? (
         <div className="error-placeholder">Erro ao carregar</div>
