@@ -5,19 +5,18 @@ export const fetchCatalogo = async (
   filters: CatalogoFilters,
   signal: AbortSignal,
 ): Promise<PaginatedResponse<MediaItem>> => {
-  const { statusId, areaId, temaId, tipoId, search, page, limit } = filters
+  const { tipoId, search, page, limit } = filters
 
   let query = supabase
-    .from('acervo')
+    .from('media')
     .select('*', { count: 'exact' })
-    .order('createdAt', { ascending: false })
+    .order('created_at', { ascending: false })
     .range((page - 1) * limit, page * limit - 1)
 
-  if (statusId) query = query.eq('status', statusId)
-  if (areaId) query = query.eq('ponto', areaId)
-  if (temaId) query = query.eq('temaPrincipal', temaId)
-  if (tipoId) query = query.eq('tipoProjeto', tipoId)
-  if (search) query = query.ilike('titulo', `%${search}%`)
+  if (tipoId) query = query.eq('type', tipoId)
+  if (search) {
+    query = query.or(`title.ilike.%${search}%,description.ilike.%${search}%`)
+  }
 
   const { data, error, count } = await query.abortSignal(signal)
 
