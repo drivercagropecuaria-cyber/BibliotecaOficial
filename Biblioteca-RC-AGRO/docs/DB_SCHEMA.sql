@@ -11,6 +11,28 @@ create table if not exists media (
   updated_at timestamptz not null default now()
 );
 
+create table if not exists areas (
+  id text primary key,
+  nome text not null,
+  descricao text
+);
+
+create table if not exists status (
+  id text primary key,
+  nome text not null,
+  descricao text
+);
+
+create table if not exists temas (
+  id text primary key,
+  nome text not null
+);
+
+create table if not exists tipos_projeto (
+  id text primary key,
+  nome text not null
+);
+
 create table if not exists tags (
   id uuid primary key default gen_random_uuid(),
   name text unique not null
