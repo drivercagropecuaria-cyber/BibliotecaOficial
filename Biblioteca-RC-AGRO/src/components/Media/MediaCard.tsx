@@ -7,6 +7,18 @@ interface MediaCardProps {
   onClick: () => void
 }
 
+const STATUS_BADGE_CLASSES: Record<string, string> = {
+  ENT: 'ent',
+  TRI: 'tri',
+  CAT: 'cat',
+  SEL: 'sel',
+  PRO: 'pro',
+  APR: 'apr',
+  APO: 'apo',
+  PUB: 'pub',
+  ARQ: 'arq',
+}
+
 const statusLabel = (status?: string | null) => status ?? 'ENT'
 
 export const MediaCard = memo(({ item, onClick }: MediaCardProps) => {
@@ -22,7 +34,9 @@ export const MediaCard = memo(({ item, onClick }: MediaCardProps) => {
             <div className="video-badge-icon">▶</div>
           </div>
         ) : null}
-        <span className="status-badge ent">{statusLabel(item.status)}</span>
+        <span className={`status-badge ${STATUS_BADGE_CLASSES[item.status] ?? 'ent'}`}>
+          {statusLabel(item.status)}
+        </span>
       </div>
       <div className="media-card-info">
         <h3 className="media-card-title" title={item.titulo}>
